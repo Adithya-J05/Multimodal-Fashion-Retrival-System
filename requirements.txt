@@ -1,0 +1,26 @@
+# Core dependencies
+torch>=2.0.0
+torchvision>=0.15.0
+transformers==4.35.0
+accelerate>=0.25.0
+fashion-clip>=0.2.0
+faiss-cpu>=1.7.4
+
+# Data processing
+numpy>=1.24.0
+pillow>=10.0.0
+opencv-python>=4.8.0
+
+# Utilities
+pyyaml>=6.0
+tqdm>=4.65.0
+jsonlines>=3.1.0
+sqlite3-utils>=3.1
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Optional (for GPU support)
+# torch==2.0.0+cu118
+# faiss-gpu>=1.7.4

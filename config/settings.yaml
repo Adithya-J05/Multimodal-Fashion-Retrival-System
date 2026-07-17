@@ -1,0 +1,64 @@
+# Global application configuration
+app:
+  name: "fashion-context-retrieval"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+
+# Device configuration
+device:
+  preferred: "auto"
+  fallback_to_cpu: true
+
+# Model configurations
+models:
+  fashion_clip:
+    model_name: "patrickjohncyh/fashion-clip"
+    embedding_dim: 512
+    batch_size: 32
+    device: "auto"
+    
+  florence_2:
+    model_name: "microsoft/Florence-2-base"   # NOT large
+    task: "caption"
+    max_length: 256
+    batch_size: 4                             # Safe for 3GB GPU
+    device: "cuda"                            # Force GPU usage
+    task_prompt: "<DETAILED_CAPTION>"         # Use detailed prompt
+
+# Data paths
+paths:
+  raw_data: "data/raw"
+  processed_data: "data/processed"
+  index_file: "data/processed/vectors.index"
+  metadata_db: "data/processed/metadata.db"
+  manifest_file: "data/processed/manifest.json"
+  evaluation_output: "data/processed/evaluation"
+
+# Fashionpedia configuration
+fashionpedia:
+  annotation_path: "data/processed/instances_attributes_val2020.json"
+
+# Retrieval configuration
+retrieval:
+  default_k: 50
+  max_k: 500
+  
+  weights:
+    image_similarity: 0.6
+    caption_similarity: 0.3
+    attribute_match: 0.1
+
+# Index configuration
+index:
+  type: "FlatL2"
+  dimension: 512
+  metric: "L2"
+
+# Dataset validation
+validation:
+  allowed_extensions: [".jpg", ".jpeg", ".png"]
+  min_width: 64
+  min_height: 64
+  max_width: 4096
+  max_height: 4096
